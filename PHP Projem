@@ -7,11 +7,9 @@
 	require_once 'tema/footer.php';
 ?>
 PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
-
 <?php 
 	require_once"tema/header.php";
 	require_once 'ayarlar/ayarlar.php';
-
 ?>
 <body>
 	<div id="container" class="container">
@@ -50,8 +48,6 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 						 <a class="'.$in.'" href="video.php?v='.$f_id.'"><img src="'.$secim.'" class="fdili"/><img src="images/fimages/'.$resim.'" class="sliderres"></a>';
 						 $r++;
 					 }
-				
-					
 				 ?>
 				</div>
 			</div>
@@ -60,8 +56,8 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 		<div id="content" class="content">	
 			<?php
 			echo '	<div id="seklenen">
-										<div id="sekyazi">Arama Sonuçları</div>
-									</div>';
+					<div id="sekyazi">Arama Sonuçları</div>
+				</div>';
 							$s=@$_GET["s"];
 							$o=@$_GET["search"];
 								if(empty($s)||!is_numeric($s))$s=1;
@@ -112,15 +108,9 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 										}
 										echo '</div>';	
 			?>
-			
-			
-				
-			
+
 		</div>
 		<div id="menu2">
-		
-				
-				
 				<div id="holder">
 					<ul id="tab">
 						<li><a href="index.php?sayfa=5&r=1" id="q1" class="z2" value="birinci">Yabancı Flimler</a></li>
@@ -162,8 +152,6 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 							}
 						}
 					}
-					
-					
 				?>
 		</div>
 		<div id="yorum">
@@ -184,8 +172,6 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 				</div>';
 				}
 				?>
-			
-			
 		</div>
 		<div id="siteson" class="siteson">
 		<h2>Film izle</h2>,<i> Hd film izle, Tek parça izle</i>
@@ -196,9 +182,7 @@ PHP ARAMA İÇERİKLERİNİN OLDUĞU SAYFA BU REQUİRE KOMUTU İLE ÇEKLİYOR
 			<p>Copyright © 2011 - 2015 KralFlimİzle.com kalitenin tek adresi.</p>
 		</div>
 		
-	</div>
-		
-		
+	</div>	
 </body>
 <?php 
 include_once"tema/footer.php";
@@ -227,17 +211,14 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 				function s1(){
 					var s1=document.getElementById("q1");
 					s1.className="z2";
-					
 				}
 				function s2(){
 					var s1=document.getElementById("q2");
 					s1.className="z2";
-					
 				}
 				function s3(){
 					var s1=document.getElementById("q3");
 					s1.className="z2";
-					
 				}
 				//holder secim off
 				function m1(){
@@ -252,7 +233,7 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 					var s1=document.getElementById("q3");
 					s1.className="z1";
 				}
-								// embed secim on
+				// embed secim on
 				function sec1(){
 				var sec=document.getElementById("sec1");
 				sec.className="s2";
@@ -301,7 +282,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 			<span id="y"><a id="menu_item" href="index.php?sayfa=2">Tavsiyelerimiz</a></span>
 			<span id="y"><a id="menu_item" href="index.php?sayfa=3">En Çok İzlenenler</a></span>
 			<span id="y"><a id="menu_item" href="index.php?sayfa=4">İletişim</a></span>
-			
 		</div>
 		<div id="arama">
 		<form action="search.php" method="get"> 
@@ -330,8 +310,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 						 <a class="'.$in.'" href="video.php?v='.$f_id.'"><img src="'.$secim.'" class="fdili"/><img src="images/fimages/'.$resim.'" class="sliderres"></a>';
 						 $r++;
 					 }
-				
-					
 				 ?>	
 				</div>
 			</div>
@@ -350,7 +328,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 					if($fragman!="")echo '<a id="sec1" href="video.php?v='.$fid.'&e=1" class="s1">Fragman</a>';
 					if($embed!="")echo '<a id="sec2" href="video.php?v='.$fid.'&e=2" class="s1">Seçenek-1</a>';
 					if($embed2!="")echo '<a id="sec3" href="video.php?v='.$fid.'&e=3" class="s1">Seçenek-2</a>';
-					
 			?>
 			</div>
 			<div id="frame">
@@ -386,7 +363,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 						  </script>';
 				break;
 			}
-
 			?>
 			</div>
 			<div id="image">
@@ -419,9 +395,7 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 				?>
 			</div>
 			<div id="ar1">
-			
 			</div>
-			
 		</div>
 		
 		<div id="menu2">
@@ -472,8 +446,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 							}
 						}
 					}
-					
-					
 				?>
 		</div>
 		<?php 	
@@ -500,9 +472,7 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 							</div>
 						</div>';
 					}
-					
 				}
-			
 			?>
 			<form action="video.php" method="get" name="yorum">
 				<div id="y3">
@@ -516,7 +486,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 								<input type="submit" value="Yorum Yap" id="b" onclick="varmi()"/>
 							</div>
 				</div>
-				
 			</form>
 			<script type="text/javascript">
 			function varmi(){
@@ -546,8 +515,6 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 						
 					}
 				}
-			
-			
 			?>
 		<div id="siteson" class="siteson">
 		<h2>Film izle</h2>,<i> Hd film izle, Tek parça izle</i>
@@ -558,14 +525,8 @@ FLİMLERİN GÖSTERİLDİĞİ SAYFA
 			<p>Copyright © 2011 - 2015 KralFlimİzle.com kalitenin tek adresi.</p>
 		</div>
 		
-	</div>
-		
-		
+	</div>		
 </body>
-<?php
-
-?>
-
 YORUMLARIN ÇEKİLDİĞİ SAYFA  
 <?php include "ayarlar/ayarlar.php";
 if($_POST){
@@ -628,7 +589,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 			<span id="y"><a id="menu_item" href="index.php?sayfa=2">Tavsiyelerimiz</a></span>
 			<span id="y"><a id="menu_item" href="index.php?sayfa=3">En Çok İzlenenler</a></span>
 			<span id="y"><a id="menu_item" href="index.php?sayfa=4">İletişim</a></span>
-			
 		</div>
 		<div id="arama">
 		<form action="search.php" method="get"> 
@@ -653,8 +613,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 						 <a class="'.$in.'" href="video.php?v='.$f_id.'"><img src="'.$secim.'" class="fdili"/><img src="images/fimages/'.$resim.'" class="sliderres"></a>';
 						 $r++;
 					 }
-				
-					
 				 ?>
 					
 				</div>
@@ -675,10 +633,8 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 			var g=document.getElementById("siteson");
 				g.className="siteson2";
 		}
-		
 		</script>
 		<div id="content" class="content">	
-		
 			 <?php
 				// //iskelet oluşturma ve sayfa secimleri
 				$sayfa=@$_GET["sayfa"];
@@ -789,8 +745,7 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<a href='index.php?sayfa=2&s=".$sonraki."'>Sonraki</a>";
 											echo "<span id='secilen'><a href='index.php?sayfa=2&s=$say'>Son</a></span>";
 										}
-										echo '</div>';
-										
+										echo '</div>';	
 							break;	
 							//ençok izlenenler sayfası
 							case 3:
@@ -841,7 +796,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<span id='secilen'><a href='index.php?sayfa=3&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-										
 							break;
 							case 4:
 							echo '	<div id="seklenen">
@@ -860,8 +814,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 							</div>';
 							//js ile sayfayı kısaltma
 							break;
-							
-							
 							/*
 							Burası Tamamen robotla alakalı
 							robotla seçim yapma sıralama
@@ -1008,10 +960,7 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<span id='secilen'><a href='index.php?sayfa=5&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-									
-									
-								}
-										
+								}		
 							break;
 							case 6:
 							echo '	<div id="seklenen">
@@ -1064,7 +1013,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<span id='secilen'><a href='index.php?sayfa=6&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-									
 								}else if(!empty($y)){
 									
 									$kayit=mysqli_num_rows(mysqli_query($c,"SELECT flim_id FROM flim WHERE yabacimi=0 and yili=".$y." ORDER BY yili desc"));
@@ -1152,8 +1100,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<span id='secilen'><a href='index.php?sayfa=6&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-									
-									
 								}
 							break;
 							case 7:
@@ -1248,19 +1194,12 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 											echo "<span id='secilen'><a href='index.php?sayfa=7&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-									
-									
 								}
 							break;
 							
 						}
-						
-							
-			?>
 			
-			
-				
-			
+			?>	
 		</div>
 		<div id="menu2">
 		
@@ -1332,9 +1271,7 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 										</script>';
 							break;
 						}
-					}
-					
-					
+					}	
 				?>
 		</div>
 		<div id="yorum">
@@ -1362,8 +1299,6 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 					}
 				}
 				?>
-			
-			
 		</div>
 		<div id="siteson" class="siteson">
 		<?php
@@ -1379,10 +1314,7 @@ ANA SAYFADAKİ ARA BÖLÜMÜ OLUŞTURAN  SAYFA require_once 'tema/anasayfa.php';
 		<div id="footer">
 			<p>Copyright © 2011 - 2015 KralFlimİzle.com kalitenin tek adresi.</p>
 		</div>
-		
-	</div>
-		
-		
+	</div>	
 </body>
 YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 <?php 
@@ -1425,10 +1357,7 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 						 <a class="'.$in.'" href="video.php?v='.$f_id.'"><img src="'.$secim.'" class="fdili"/><img src="images/fimages/'.$resim.'" class="sliderres"></a>';
 						 $r++;
 					 }
-				
-					
 				 ?>
-					
 				</div>
 			</div>
 		</div>
@@ -1447,10 +1376,8 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 			var g=document.getElementById("siteson");
 				g.className="siteson2";
 		}
-		
 		</script>
 		<div id="content" class="content">	
-		
 			 <?php
 				// //iskelet oluşturma ve sayfa secimleri
 				$sayfa=@$_GET["sayfa"];
@@ -1612,8 +1539,7 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 											echo "<a href='index.php?sayfa=3&s=".$sonraki."'>Sonraki</a>";
 											echo "<span id='secilen'><a href='index.php?sayfa=3&s=$say'>Son</a></span>";
 										}
-										echo '</div>';
-										
+										echo '</div>';	
 							break;
 							case 4:
 							echo '	<div id="seklenen">
@@ -1641,7 +1567,7 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 							case 5:
 							echo '	<div id="seklenen">
 										<div id="sekyazi">Yabancı Flimler</div>
-									</div>';
+								</div>';
 							$s=@$_GET["s"];
 							$o=@$_GET["o"];
 							$y=@$_GET["y"];
@@ -2020,19 +1946,10 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 											echo "<span id='secilen'><a href='index.php?sayfa=7&s=$say'>Son</a></span>";
 										}
 										echo '</div>';
-									
-									
 								}
 							break;
-							
-						}
-						
-							
-			?>
-			
-			
-				
-			
+						}		
+			?>	
 		</div>
 		<div id="menu2">
 		
@@ -2105,8 +2022,6 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 							break;
 						}
 					}
-					
-					
 				?>
 		</div>
 		<div id="yorum">
@@ -2152,15 +2067,13 @@ YEDEK OLARAK TAASARLADIĞIM İÇERİKLERİ OLUŞTURAN Yedek anasayfa
 			<p>Copyright © 2011 - 2015 KralFlimİzle.com kalitenin tek adresi.</p>
 		</div>
 		
-	</div>
-		
-		
+	</div>	
 </body>
 ARAMA SAYFASI arama.php
 	<?php>
 
 	echo '	<div id="seklenen">
-										<div id="sekyazi">Arama Sonuçları</div>
+				<div id="sekyazi">Arama Sonuçları</div>
 									</div>';
 							$s=@$_GET["s"];
 								if(empty($s)||!is_numeric($s))$s=1;
