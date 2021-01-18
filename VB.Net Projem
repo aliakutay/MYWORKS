@@ -1,0 +1,513 @@
+Public id As Integer
+Public counter As Integer
+Public ct As Integer
+Public c2 As Integer
+Dim VOF(10000) As String
+Dim rank(10000) As Integer
+Dim controlarray(10) As Integer
+
+Function Array1(ByVal i)
+Dim keyname(67) As String
+    keyname(0) = "a"
+    keyname(1) = "b"
+    keyname(2) = "c"
+    keyname(3) = "d"
+    keyname(4) = "e"
+    keyname(5) = "f"
+    keyname(6) = "g"
+    keyname(7) = "h"
+    keyname(8) = "ı"
+    keyname(9) = "j"
+    keyname(10) = "k"
+    keyname(11) = "l"
+    keyname(12) = "m"
+    keyname(13) = "n"
+    keyname(14) = "o"
+    keyname(15) = "p"
+    keyname(16) = "q"
+    keyname(17) = "r"
+    keyname(18) = "s"
+    keyname(19) = "t"
+    keyname(20) = "u"
+    keyname(21) = "v"
+    keyname(22) = "w"
+    keyname(23) = "x"
+    keyname(24) = "y"
+    keyname(25) = "z"
+    keyname(26) = "aa"
+    keyname(27) = "ab"
+    keyname(28) = "ac"
+    keyname(29) = "ad"
+    keyname(30) = "ae"
+    keyname(31) = "af"
+    keyname(32) = "ag"
+    keyname(33) = "ah"
+    keyname(34) = "aı"
+    keyname(35) = "aj"
+    keyname(36) = "ak"
+    keyname(37) = "al"
+    keyname(38) = "am"
+    keyname(39) = "an"
+    keyname(40) = "ao"
+    keyname(41) = "ap"
+    keyname(42) = "aq"
+    keyname(43) = "ar"
+    keyname(44) = "as"
+    keyname(45) = "au"
+    keyname(46) = "av"
+    keyname(47) = "aw"
+    keyname(48) = "ax"
+    keyname(49) = "ay"
+    keyname(50) = "az"
+    keyname(51) = "ba"
+    keyname(52) = "bb"
+    keyname(53) = "bc"
+    keyname(54) = "bd"
+    keyname(55) = "be"
+    keyname(56) = "bf"
+    keyname(57) = "bg"
+    keyname(58) = "bh"
+    keyname(59) = "bı"
+    keyname(60) = "bj"
+    keyname(61) = "bk"
+    keyname(62) = "bl"
+    keyname(63) = "bm"
+    keyname(64) = "bn"
+    keyname(65) = "bo"
+    keyname(66) = "bp"
+    keyname(67) = "bq"
+        Array1 = keyname(i)
+End Function
+'Bu Foksiyon Veri Bulma fonksiyonu
+Function DataFind(ByVal searched)
+ct = Worksheets("FORM").Cells(Rows.Count, "a").End(xlUp).Row
+    counter = 0
+    ct = Worksheets("FORM").Cells(Rows.Count, "a").End(xlUp).Row
+      For j = 0 To 44
+        For i = 4 To ct
+            If Worksheets("FORM").Range(Array1(j) & i).Value Like searched & "*" Then
+                If Len(Worksheets("FORM").Range("a" & i).Value) > 0 And Worksheets("FORM").Range("b" & i).Value > 0 Then
+                    VOF(counter) = Worksheets("FORM").Range("a" & i).Value & "                   " & Worksheets("FORM").Range("b" & i).Value
+                    rank(counter) = i
+                    counter = counter + 1
+                End If
+            End If
+        Next i
+      Next j
+End Function
+'Fonksiyon izin düzenleme
+Function editcontrol(ByVal find)
+ct = Worksheets("FORM").Cells(Rows.Count, "a").End(xlUp).Row
+    For i = 4 To ct
+        If CStr(find) = CStr(Trim(Worksheets("FORM").Range("a" & i).Value)) Then
+            If Not rank(PeditFrEditList.ListIndex) = i Then
+                editcontrol = 1
+                i = ct
+            End If
+        Else
+            editcontrol = 0
+        End If
+    Next i
+End Function
+'Yolluk sayfası temizleme fonksiyonu
+Function PanelDelete()
+    For i = 1 To frmGuard.c2
+        Controls.Remove ("lstName" & i)
+        Controls.Remove ("obDel" & i)
+        Controls.Remove ("obEdit" & i)
+        Controls.Remove ("obPrint" & i)
+        PbusCbCreateList.Top = 38
+        PbusCbdeleteList.Top = 38
+        PbusCbEditList.Top = 38
+        PbusCbWriterList.Top = 38
+    Next i
+End Function
+'Yolluk sayfası bilgi görüntüleme fonksiyonu
+Function PanelBring()
+    c2 = 0
+    For i = 1 To 10
+        If Worksheets("Ayar Sayfası").Range("a" & i + 51).Value = "liste" & i Then
+                c2 = c2 + 1
+                Set txtLstname = frmGuard.PbusFrBusWriter.Controls.Add("Forms.TextBox.1")
+                With txtLstname
+                    .Height = 24
+                    .Width = 200
+                    .Left = 18
+                    .Top = 10 + c2 * 26
+                    .Text = Worksheets("Ayar Sayfası").Range("b" & i + 51).Value
+                    .Name = "lstName" & c2
+                End With
+                Set btnlstdelete = frmGuard.PbusFrBusWriter.Controls.Add("Forms.CheckBox.1")
+                With btnlstdelete
+                    .Height = 24
+                    .Width = 50
+                    .Left = 220
+                    .Top = 10 + c2 * 26
+                    .Caption = "Sil"
+                    .Name = "obDel" & c2
+                End With
+                Set btnLstedit = frmGuard.PbusFrBusWriter.Controls.Add("Forms.OptionButton.1")
+                With btnLstedit
+                    .Height = 24
+                    .Width = 70
+                    .Left = 280
+                    .Top = 10 + c2 * 26
+                    .Caption = "Düzenle"
+                    .Name = "obEdit" & c2
+                End With
+                Set btnLstprint = frmGuard.PbusFrBusWriter.Controls.Add("Forms.CheckBox.1")
+                With btnLstprint
+                    .Height = 24
+                    .Width = 90
+                    .Left = 350
+                    .Top = 10 + c2 * 26
+                    .Caption = "Liste Çıktısı al"
+                    .Name = "obPrint" & c2
+                End With
+                controlarray(c2) = i
+            If c2 = 11 Then
+                c2 = 10
+            End If
+        End If
+    Next i
+    PbusCbCreateList.Top = PbusCbCreateList.Top + c2 * 26
+    PbusCbdeleteList.Top = PbusCbdeleteList.Top + c2 * 26
+    PbusCbEditList.Top = PbusCbEditList.Top + c2 * 26
+    PbusCbWriterList.Top = PbusCbWriterList.Top + c2 * 26
+End Function
+'Korcunun bütün bilgilerini çeken makrolu sayfaya yönlendirip çıktı alır
+Private Sub cbGuardInfoPrint_Click()
+If ParamaLstFinded.ListIndex > -1 Then
+    Worksheets("BİLGİ SAYFASI").Range("p3").Value = Left(ParamaLstFinded.List(ParamaLstFinded.ListIndex), 11)
+    Worksheets("BİLGİ SAYFASI").PrintOut
+End If
+End Sub
+'Aranıp bulunan kaydın silinmesi sağlayan buton
+Private Sub cbStackdelete_Click()
+    If Not ParamaLstFinded.ListIndex = -1 Then
+        Dim komut As Integer
+        komut = MsgBox("Bu kayıt silinsinmi", vbYesNo)
+        If komut = 6 Then
+            Worksheets("FORM").Rows(rank(ParamaLstFinded.ListIndex)).Delete
+            If ParamaLstFinded.ListCount > 0 Then
+                For i = 0 To ParamaLstFinded.ListCount - 1
+                    ParamaLstFinded.RemoveItem (0)
+                Next i
+            End If
+            DataFind (ParamaTxtSearcher.Text)
+        End If
+    Else
+        MsgBox "Kayıt seçmediniz"
+    End If
+End Sub
+'Listeden seçim yapıldığında veri çekme
+Private Sub ParamaLstFinded_Click()
+   where = rank(ParamaLstFinded.ListIndex)
+   For i = 1 To 45
+        Controls("PAramaFr" & i).Value = Worksheets("FORM").Range(Array1(i - 1) & where).Value
+   Next i
+End Sub
+'Arama Sayfası veri çekme
+Private Sub ParamaTxtSearcher_Change()
+  If Not Len(ParamaTxtSearcher.Text) = 0 Then
+    If ParamaLstFinded.ListCount > 0 Then
+        For i = 0 To ParamaLstFinded.ListCount - 1
+            ParamaLstFinded.RemoveItem (0)
+        Next i
+    End If
+    DataFind (ParamaTxtSearcher.Text)
+    If counter > 0 Then
+        For i = 0 To counter
+            ParamaLstFinded.AddItem (VOF(i))
+        Next i
+    End If
+  End If
+End Sub
+
+Private Sub PbusCbEditList_Click()
+    frmCreatebuss.Show
+End Sub
+
+Private Sub PbusFrBusWriter_Click()
+
+End Sub
+
+'Düzenleme butonu
+Private Sub PeditBtnEdit_Click()
+    tc = IsNumeric(PeditFrTxt1.Text)
+    Nm = IsNumeric(PeditFrTxt2.Text)
+    If PeditFrEditList.ListIndex >= 0 Then
+        If Not editcontrol(PeditFrTxt1.Text) = 1 Then
+            If tc = True And Nm = False Then
+                where = rank(PeditFrEditList.ListIndex)
+                For i = 1 To 45
+                    Worksheets("FORM").Range(Array1(i - 1) & where).Value = Controls("PeditFrTxt" & i).Value
+                Next i
+                For i = 1 To 45
+                    Controls("PeditFrTxt" & i).Value = ""
+                Next i
+                PeditBtnEdit.Enabled = False
+            Else
+                MsgBox "T.C no ve ismi kontrol ediniz"
+            End If
+        Else
+            MsgBox "Böyle bir T.C.No lu şahıs var"
+        End If
+    Else
+        MsgBox "Listeden kişi seciniz"
+    End If
+End Sub
+'Düzenleme Sayfası liste veri çekme
+Private Sub PeditFrEditList_Click()
+   where = rank(PeditFrEditList.ListIndex)
+   For i = 1 To 45
+        Controls("PeditFrTxt" & i).Value = Worksheets("FORM").Range(Array1(i - 1) & where).Value
+   Next i
+   PeditBtnEdit.Enabled = True
+End Sub
+'Düzenleme Sayfası veri çekme
+Private Sub PeditFrEditTxt_Change()
+  If Not Len(PeditFrEditTxt.Text) = 0 Then
+    If PeditFrEditList.ListCount > 0 Then
+        For i = 0 To PeditFrEditList.ListCount - 1
+            PeditFrEditList.RemoveItem (0)
+        Next i
+    End If
+    DataFind (PeditFrEditTxt.Text)
+    If counter > 0 Then
+        For i = 0 To counter
+            PeditFrEditList.AddItem (VOF(i))
+        Next i
+    End If
+  End If
+End Sub
+'Bu Kişi Kayıt Butonu
+Private Sub PsaveBtnSave_Click()
+    If Len(PsaveFr1.Text) = 11 Then
+        If Len(PsaveFr2.Text) > 0 Then
+            If control(PsaveFr1.Text) = 1 Then
+                MsgBox "Böyle bir kayıt var"
+            ElseIf control(PsaveFr1.Text) = 0 Then
+                For i = 1 To 45
+                    Worksheets("FORM").Range(Array1(i - 1) & ct + 1).Value = Controls("PsaveFr" & i).Value
+                Next i
+                For i = 1 To 45
+                    Controls("PsaveFr" & i).Value = ""
+                Next i
+            Else
+                MsgBox "Bilinmeyen bir hata oluştu"
+            End If
+        Else
+            MsgBox "Kişinin İsmi boş geçilemez ve sayı içeremez"
+        End If
+    Else
+        MsgBox "Tc Kimlik Numarsında Yanlışlık Var!"
+    End If
+End Sub
+
+
+
+
+
+
+'Yolluk listesi oluşturma
+Private Sub PbusCbCreateList_Click()
+    If Not c2 = 10 Then
+        frmCreatebuss.Show
+        Unload Me
+    End If
+End Sub
+'Yolluk listesi silme
+Private Sub PbusCbdeleteList_Click()
+    ct = 1
+    For i = 1 To c2
+        If Controls("obDel" & i).Value = True Then
+            Worksheets("Ayar Sayfası").Range("a" & controlarray(i) + 51).Value = ""
+            Worksheets("Ayar Sayfası").Range("b" & controlarray(i) + 51).Value = ""
+            Worksheets("Ayar Sayfası").Range("c" & controlarray(i) + 51).Value = ""
+            Worksheets("Ayar Sayfası").Range("d" & controlarray(i) + 51).Value = ""
+            Worksheets("Ayar Sayfası").Range("e" & controlarray(i) + 51).Value = ""
+            Application.DisplayAlerts = False
+            Worksheets("liste" & controlarray(i)).Delete
+        End If
+    Next i
+    PanelDelete
+    PanelBring
+End Sub
+'Kontrol metodu
+Function control(ByVal find)
+ct = Worksheets("FORM").Cells(Rows.Count, "a").End(xlUp).Row
+    For i = 4 To ct
+        If CStr(find) = CStr(Trim(Worksheets("FORM").Range("a" & i).Value)) Then
+            control = 1
+            i = ct
+        Else
+            control = 0
+        End If
+    Next i
+End Function
+'İzin yazdırma butonu
+Private Sub PmissionBtnWriter_Click()
+    Worksheets("Gk GÖREV BELGESİ").Range("a10").Value = PmissionTxtmission.Text
+    Worksheets("Gk GÖREV BELGESİ").Range("a13").Value = PmissionTxtTopic.Text
+    Worksheets("Gk GÖREV BELGESİ").PrintOut
+End Sub
+'Görev Belgesi Çıkarmak İçin Kişi Arama Çubuğu
+Private Sub PmissionFrTxtSearcher_Change()
+  If Not Len(PmissionFrTxtSearcher.Text) = 0 Then
+    If PmissionLstFinded.ListCount > 0 Then
+        For i = 0 To PmissionLstFinded.ListCount - 1
+            PmissionLstFinded.RemoveItem (0)
+        Next i
+    End If
+    DataFind (PmissionFrTxtSearcher.Text)
+    If counter > 0 Then
+        For i = 0 To counter
+            PmissionLstFinded.AddItem (VOF(i))
+        Next i
+    End If
+  End If
+End Sub
+'Görev Belgesi Çıkarmak İçin Kişi Seçme Listesi
+Private Sub PmissionLstFinded_Click()
+   where = rank(PmissionLstFinded.ListIndex)
+   PmissionTxtmission.Value = "                " & Worksheets("FORM").Range("c" & where).Value & " oğlu " & Worksheets("FORM").Range("f" & where).Value & " " & Worksheets("FORM").Range("g" & where).Value & " " & Worksheets("FORM").Range("h" & where).Value & " ilçesi doğumlu " & Worksheets("FORM").Range("b" & where).Value & " (T.C. " & Worksheets("FORM").Range("a" & where).Value & ") " & Worksheets("FORM").Range("g" & where).Value & " ili " & Worksheets("FORM").Range("h" & where).Value & " ilçesi " & Worksheets("FORM").Range("ı" & where).Value & " Köyü nüfusuna kayıtlı olup halen aynı köyde " & Worksheets("FORM").Range("n" & where).Value & " tarihinden itibaren Güvenlik Korucusu olarak görev yapmaktadır."
+   PmissionTxtTopic.Value = "İş bu belge şahsın silah alması için kendi isteği üzerine verilmiştir." & Worksheets("Ayar Sayfası").Range("ı1").Value
+End Sub
+'İzin sil Butonu
+Private Sub PpermissionBtndelete_Click()
+    id = rank(PpermissionLstfind.ListIndex)
+    Count = PpermissionLstPer.ListCount * 2
+    For i = (PpermissionLstPer.ListIndex + 1) * 2 + 47 To Count + 47 Step 2
+        Worksheets("FORM").Range(Array1(i) & id).Value = Worksheets("FORM").Range(Array1(i + 2) & id).Value
+        Worksheets("FORM").Range(Array1(i + 1) & id).Value = Worksheets("FORM").Range(Array1(i + 3) & id).Value
+    Next i
+        Worksheets("FORM").Range(Array1(Count + 47) & id).Value = ""
+        Worksheets("FORM").Range(Array1(Count + 48) & id).Value = ""
+        permission_update
+End Sub
+'Bu buton izin yazdırma
+
+Private Sub PpermissionBtnwriter_Click()
+Dim percount As Integer
+percount = 0
+    If PpermissionLstfind.ListIndex > 0 And PpermissionLstfind.ListCount > 0 Then
+        id = rank(PpermissionLstfind.ListIndex)
+        Dim toplam As Integer
+            toplam = 0
+            tarihmi = IsDate(PpermissionFrwritertxtdate.Text)
+            sayimi = IsNumeric(PpermissionFrwritertxtday.Text)
+        If tarihmi = True And sayimi = True Then
+            If opYearpermission.Value = True Then
+                perexcelpage = Worksheets("İzin Kontrol Sistemi").Cells(Rows.Count, "a").End(xlUp).Row
+                If perexcelpage <= 2 Then
+                    perexcelpage = 3
+                End If
+                For j = 3 To perexcelpage
+                    If Worksheets("FORM").Range("a" & id).Value = Worksheets("İzin Kontrol Sistemi").Range("a" & j).Value Then
+                        percount = percount + Worksheets("İzin Kontrol Sistemi").Range("d" & j).Value
+                    End If
+                Next j
+                If percount + Worksheets("İzin Kontrol Sistemi").Range("d" & j).Value <= 20 Then
+                    For i = 1 To 6
+                            Worksheets("İzin Kontrol Sistemi").Range("a" & perexcelpage).Value = Worksheets("FORM").Range("a" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("b" & perexcelpage).Value = Worksheets("FORM").Range("b" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("c" & perexcelpage).Value = PpermissionFrwritertxtdate.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("d" & perexcelpage).Value = PpermissionFrwritertxtday.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("e" & perexcelpage).Value = CDate(PpermissionFrwritertxtdate.Value) + CDate(PpermissionFrwritertxtday.Value)
+                            Worksheets("İzin Kontrol Sistemi").Range("f" & perexcelpage).Value = "Yıllık İzin"
+                    Next i
+                Else
+                    MsgBox "İzinler 20 günü aşamaz"
+                End If
+
+ 
+
+
+            ElseIf opEnablepermission.Value = True Then
+                            Worksheets("İzin Kontrol Sistemi").Range("a" & perexcelpage).Value = Worksheets("FORM").Range("a" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("b" & perexcelpage).Value = Worksheets("FORM").Range("b" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("c" & perexcelpage).Value = PpermissionFrwritertxtdate.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("d" & perexcelpage).Value = PpermissionFrwritertxtday.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("e" & perexcelpage).Value = CDate(PpermissionFrwritertxtdate.Value) + CDate(PpermissionFrwritertxtday.Value)
+                            Worksheets("İzin Kontrol Sistemi").Range("f" & perexcelpage).Value = "Mazeret İzni"
+            ElseIf opReportpermission.Value = True Then
+                            Worksheets("İzin Kontrol Sistemi").Range("a" & perexcelpage).Value = Worksheets("FORM").Range("a" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("b" & perexcelpage).Value = Worksheets("FORM").Range("b" & id).Value
+                            Worksheets("İzin Kontrol Sistemi").Range("c" & perexcelpage).Value = PpermissionFrwritertxtdate.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("d" & perexcelpage).Value = PpermissionFrwritertxtday.Value
+                            Worksheets("İzin Kontrol Sistemi").Range("e" & perexcelpage).Value = CDate(PpermissionFrwritertxtdate.Value) + CDate(PpermissionFrwritertxtday.Value)
+                            Worksheets("İzin Kontrol Sistemi").Range("f" & perexcelpage).Value = "Rapor"
+
+            End If
+        Else
+            MsgBox "Tarihi ve gün sayısını kontrol ediniz"
+        End If
+        permission_update
+    Else
+        MsgBox "Kişi seçmediniz listeden kişi seçiniz"
+    End If
+End Sub
+'izne çıkacak kişileri seçme listesi
+Private Sub PpermissionLstfind_Click()
+    permission_update
+End Sub
+'izin listesi güncelleme
+Function permission_update()
+   For i = 0 To PpermissionLstPer.ListCount - 1
+     PpermissionLstPer.RemoveItem (0)
+   Next i
+   where = rank(PpermissionLstfind.ListIndex)
+   For i = 3 To Worksheets("İzin Kontrol Sistemi").Cells(Rows.Count, "a").End(xlUp).Row
+        If Worksheets("FORM").Range("a" & where).Value = Worksheets("İzin Kontrol Sistemi").Range("a" & i).Value Then
+            PpermissionLstPer.AddItem (Worksheets("FORM").Range("b" & where).Value & "   " & Worksheets("FORM").Range("c" & where).Value & "   " & Worksheets("İzin Kontrol Sistemi").Range("c" & i).Value & "   " & Worksheets("İzin Kontrol Sistemi").Range("d" & i).Value & "   " & Worksheets("İzin Kontrol Sistemi").Range("f" & i).Value)
+        End If
+   Next i
+  If PpermissionLstPer.ListCount = 0 Then
+    PmissionFr2.Visible = False
+    PpermissionFrWriter.Top = 18
+  Else
+    PpermissionFrWriter.Top = 156
+    PmissionFr2.Visible = True
+    PpermissionBtndelete.Enabled = True
+  End If
+End Function
+'Gittiği İzinleri Gösteren liste
+Private Sub PpermissionLstPer_Click()
+    If PpermissionLstPer.ListIndex >= 0 Then
+        PpermissionFrWriter.Enabled = True
+    End If
+End Sub
+
+'İzine gidecek kişi arama kutusu
+Private Sub PpermissionTxtSearcher_Change()
+If Not Len(PpermissionTxtSearcher.Text) = 0 Then
+    If PpermissionLstfind.ListCount > 0 Then
+        For i = 0 To PpermissionLstfind.ListCount - 1
+            PpermissionLstfind.RemoveItem (0)
+        Next i
+    End If
+    DataFind (PpermissionTxtSearcher.Text)
+    If counter > 0 Then
+        For i = 0 To counter
+            PpermissionLstfind.AddItem (VOF(i))
+        Next i
+    End If
+  End If
+End Sub
+
+Private Sub UserForm_Initialize()
+    PpermissionCbMonth.AddItem ("Ocak")
+    PpermissionCbMonth.AddItem ("Şubat")
+    PpermissionCbMonth.AddItem ("Mart")
+    PpermissionCbMonth.AddItem ("Nisan")
+    PpermissionCbMonth.AddItem ("Mayıs")
+    PpermissionCbMonth.AddItem ("Haziran")
+    PpermissionCbMonth.AddItem ("Temmuz")
+    PpermissionCbMonth.AddItem ("Ağustos")
+    PpermissionCbMonth.AddItem ("Eylül")
+    PpermissionCbMonth.AddItem ("Ekim")
+    PpermissionCbMonth.AddItem ("Kasım")
+    PpermissionCbMonth.AddItem ("Aralık")
+    PanelBring
+End Sub
