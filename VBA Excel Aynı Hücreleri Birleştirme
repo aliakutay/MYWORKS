@@ -1,0 +1,18 @@
+Sub MergeSameCells()
+  Dim Counter,Rcount as integer
+  Counter=2
+  Rcount=Range("a99999").End(xlUp).Row
+    For i=2 To Rcount
+      For j=Counter to Rcount
+        If Range("a"&i).Value=Range("a"&j).Value Then
+            Application.DisplayAlerts=False
+            Range("a"&i&":a"&j).Merge
+         Else
+            Counter=j
+            i=j
+         End If
+      Next j
+  Next i
+  Columns("a").VerticalAlignment= xlCenter
+  Columns("a").HorizontalAlignment= xlCenter
+End Sub
